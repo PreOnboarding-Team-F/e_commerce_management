@@ -1,4 +1,5 @@
 import { Model } from 'sequelize';
+import { Op } from 'sequelize';
 
 class Coupon extends Model {
   static init(sequelize, DataTypes) {
@@ -37,6 +38,7 @@ class Coupon extends Model {
       },
       {
         sequelize,
+        timestamps: false,
         tableName: 'coupons',
         timestamps: false,
       }
@@ -47,6 +49,34 @@ class Coupon extends Model {
       foreignKey: {
         name: 'couponStatusId',
         allowNull: false,
+      },
+    });
+  }
+  static async getCouponId(couponStatusId, discountRate) {
+    const result = await Coupon.findOne({
+      where: {
+        [Op.and]: [
+          { couponStatusId: couponStatusId },
+          { discountRate: discountRate },
+        ],
+      },
+    });
+    return result;
+  }
+  static async createCoupon(discountRate, code, quantity, couponStatusId) {
+    return await Coupon.create({
+      discountRate,
+      code: code,
+      quantity,
+      useNum: 0,
+      totalDiscountPrice: 0,
+      couponStatusId,
+    });
+  }
+  static async getCouponInfo(couponId) {
+    return await Coupon.findOne({
+      where: {
+        id: couponId,
       },
     });
   }

@@ -40,7 +40,7 @@ OrderStatus.init(sequelize, DataTypes);
 DeliveryStatus.init(sequelize, DataTypes);
 DeliveryCost.init(sequelize, DataTypes);
 
-//Country.associations(db);
+Country.associate(db);
 Coupon.associate(db);
 CouponStatus.associate(db);
 CouponHistory.associate(db);
