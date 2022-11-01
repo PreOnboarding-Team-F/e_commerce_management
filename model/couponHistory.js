@@ -32,6 +32,17 @@ class CouponHistory extends Model {
       foreignKey: { name: 'couponId', allowNull: false },
     });
   }
+  static giveCouponToUser = async (userId, couponId) => {
+    return await CouponHistory.create({
+      userId,
+      couponId,
+    });
+  };
+  static userCouponInfo = async userId => {
+    return await CouponHistory.findOne({
+      where: { userId: userId },
+    });
+  };
 }
 
 export default CouponHistory;

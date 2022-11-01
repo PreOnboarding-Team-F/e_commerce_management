@@ -16,5 +16,6 @@ const validateCreateCoupon = [
 ];
 
 router.post('/create', validateCreateCoupon, couponController.createCoupon);
+router.post('/give', couponController.giveCouponTOuser);
 
 export default router;

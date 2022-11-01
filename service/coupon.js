@@ -3,6 +3,7 @@ import {
   BadRequestException,
 } from '../util/exception/index.js';
 import Coupon from '../model/coupon.js';
+import CouponHistory from '../model/couponHistory.js';
 
 /**
  * 쿠폰 코드를 랜덤으로 생성해주기 위한 함수 입니다.
@@ -54,6 +55,34 @@ const createCoupon = async (discountRate, quantity, couponStatusId) => {
   Coupon.createCoupon(discountRate, code, quantity, couponStatusId);
 };
 
+/**
+ * 유저에게 쿠폰을 발급해주는 코드입니다.
+ */
+const giveCouponTOuser = async (couponId, userId) => {
+  /**
+   * 없는 쿠폰이거나 쿠폰의 수량이 없으면 메시지를 반환합니다.
+   */
+  const getCouponInfo = await Coupon.getCouponInfo(couponId);
+  const couponQuantity = getCouponInfo.dataValues['quantity'];
+
+  if (!getCouponInfo || couponQuantity === 0) {
+    throw new NotFoundException('유효하지 않은 쿠폰입니다.');
+  }
+
+  /**
+   * 쿠폰을 가지고 있거나 사용한지 않은 쿠폰이면 메시지를 반환합니다.
+   */
+  const isExistCouponToUser = await CouponHistory.userCouponInfo(userId);
+  const notUseCoupon = isExistCouponToUser.dataValues['useDate'];
+
+  if (isExistCouponToUser && !notUseCoupon) {
+    throw new NotFoundException('이미 쿠폰을 가지고있는 유저입니다.');
+  }
+
+  CouponHistory.giveCouponToUser(couponId, userId);
+};
+
 export default {
   createCoupon,
+  giveCouponTOuser,
 };
