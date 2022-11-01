@@ -2,8 +2,11 @@ import 'express-async-errors';
 
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { errorHandler } from './middleware/errorHandler.js';
+import { exceptionErrorHandler } from './middleware/globalErrorHandler.js';
 import express from 'express';
 import morgan from 'morgan';
+import { notFoundHandler } from './middleware/notFoundHandler.js';
 import routes from './route/index.js';
 import { sequelize } from './db/database.js';
 
@@ -20,6 +23,10 @@ const createApp = () => {
   app.use(express.json());
   app.use(routes);
   // Error Middleware
+  app.use(notFoundHandler);
+  app.use(exceptionErrorHandler);
+  app.use(errorHandler);
+
   sequelize
     .sync({ force: true })
     .then(() => {
