@@ -58,8 +58,12 @@ class Order extends Model {
     });
   }
 
-  static async findById(id) {}
-  static async updateDeliveryStatus(id, deliveryStatus) {}
+  static async findById(id) {
+    return await Order.findByPk(id);
+  }
+  static async updateDeliveryStatus(order, status) {
+    await order.update({ deliveryStatus: status });
+  }
 }
 
 export default Order;

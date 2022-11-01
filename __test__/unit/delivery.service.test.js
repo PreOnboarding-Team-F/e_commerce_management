@@ -21,7 +21,8 @@ describe('order service delivery status update', () => {
   it('deliveryStatus가 유효하지 않을 때', () => {
     const orderId = 1;
     const deliveryStatus = 1;
-    Order.findById = jest.fn(() => 1);
+    const order = {};
+    Order.findById = jest.fn(() => order);
     DeliveryStatus.findByType = jest.fn();
 
     expect(async () => {
@@ -29,15 +30,17 @@ describe('order service delivery status update', () => {
     }).rejects.toThrowError(BadRequestException);
   });
 
-  it('성공 시', async () => {
+  it('성공 했을 때', async () => {
     const orderId = 1;
     const deliveryStatus = 1;
-    Order.findById = jest.fn(() => 1);
-    DeliveryStatus.findByType = jest.fn(() => 1);
-    Order.updateDeliveryStatus = jest.fn();
+    const order = {};
+    const status = {};
+    Order.findById = jest.fn(() => order);
+    DeliveryStatus.findByType = jest.fn(() => status);
 
     await orderService.updateDeliveryStatus(orderId, deliveryStatus);
 
     expect(Order.updateDeliveryStatus).toBeCalledTimes(1);
+    expect(Order.updateDeliveryStatus).toBeCalledWith(order, status);
   });
 });

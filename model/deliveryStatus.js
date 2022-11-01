@@ -24,7 +24,9 @@ class DeliveryStatus extends Model {
     );
   }
   static associate(models) {}
-  static findByType(type) {}
+  static async findByType(type) {
+    return await DeliveryStatus.findOne({ where: { type } });
+  }
 }
 
 export default DeliveryStatus;
