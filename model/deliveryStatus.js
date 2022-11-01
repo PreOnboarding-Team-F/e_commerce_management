@@ -24,6 +24,7 @@ class DeliveryStatus extends Model {
     );
   }
   static associate(models) {}
+  static findByType(type) {}
 }
 
 export default DeliveryStatus;

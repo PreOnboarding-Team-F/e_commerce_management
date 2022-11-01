@@ -57,6 +57,9 @@ class Order extends Model {
       foreignKey: 'deliveryStatusId',
     });
   }
+
+  static async findById(id) {}
+  static async updateDeliveryStatus(id, deliveryStatus) {}
 }
 
 export default Order;
