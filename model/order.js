@@ -12,7 +12,7 @@ class Order extends Model {
           unique: true,
         },
         orderDate: {
-          type: DataTypes.DATE,
+          type: DataTypes.DATEONLY,
           allowNull: false,
           field: 'order_date',
         },
@@ -30,6 +30,7 @@ class Order extends Model {
         buyrZipx: {
           type: DataTypes.STRING(40),
           allowNull: false,
+          field: 'buyr_zipx',
         },
         deliveryNum: {
           type: DataTypes.STRING(100),
@@ -40,6 +41,7 @@ class Order extends Model {
       {
         sequelize,
         tableName: 'orders',
+        timestamps: false,
       }
     );
   }
@@ -59,10 +61,10 @@ class Order extends Model {
   }
 
   static async findById(id) {
-    return await Order.findByPk(id);
+    return await Order.findOne({ where: { id } });
   }
-  static async updateDeliveryStatus(order, status) {
-    await order.update({ deliveryStatus: status });
+  static async updateDeliveryStatus(order, deliveryStatus) {
+    await order.update({ deliveryStatusId: deliveryStatus.id });
   }
 }
 
