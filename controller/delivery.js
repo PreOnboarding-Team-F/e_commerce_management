@@ -1,7 +1,8 @@
 import * as deliveryService from '../service/delivery.js';
 
 export const updateDeliveryStatus = async (req, res) => {
-  const { orderId, deliveryStatus } = req.body;
+  const orderId = req.params.id;
+  const deliveryStatus = req.body.deliveryStatus;
 
   await deliveryService.updateDeliveryStatus(orderId, deliveryStatus);
 
