@@ -1,6 +1,7 @@
 import orderStatusRepository from '../model/orderStatus.js';
 import orderRepository from '../model/order.js';
 import userRepository from '../model/user.js';
+import { BadRequestException } from '../util/exception/badRequest.exception.js';
 
 async function getOrders(search) {
   if (search?.orderStatus) {
@@ -8,7 +9,7 @@ async function getOrders(search) {
       search.orderStatus
     );
     if (!search.orderStatusId) {
-      // err 넘겨야함 badrequest
+      throw new BadRequestException('주문 상태 값이 잘못되었습니다.');
     }
   }
   if (search.startDate) {
