@@ -82,7 +82,15 @@ const giveCouponTOuser = async (couponId, userId) => {
   CouponHistory.giveCouponToUser(couponId, userId);
 };
 
+/**
+ * 발급된 쿠폰 사용
+ */
+const useCoupon = async (couponId, userId) => {
+  const getCoupon = await Coupon.getCouponInfo(couponId);
+};
+
 export default {
   createCoupon,
   giveCouponTOuser,
+  useCoupon,
 };
