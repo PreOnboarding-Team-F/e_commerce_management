@@ -20,6 +20,7 @@ class DeliveryStatus extends Model {
       {
         sequelize,
         tableName: 'delivery_status',
+        timestamps: false,
       }
     );
   }

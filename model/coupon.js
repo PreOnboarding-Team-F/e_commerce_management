@@ -38,6 +38,7 @@ class Coupon extends Model {
       {
         sequelize,
         tableName: 'coupons',
+        timestamps: false,
       }
     );
   }

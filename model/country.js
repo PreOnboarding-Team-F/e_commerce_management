@@ -30,6 +30,7 @@ class Country extends Model {
       {
         sequelize,
         tableName: 'countries',
+        timestamps: false,
       }
     );
   }

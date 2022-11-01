@@ -19,6 +19,7 @@ class CouponHistory extends Model {
       {
         sequelize,
         tableName: 'coupon_histories',
+        timestamps: false,
       }
     );
   }
