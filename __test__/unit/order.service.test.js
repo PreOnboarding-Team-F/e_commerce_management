@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '../../util/exception/index.js';
 import { sequelize, Coupon } from '../../db/database.js';
-import { ORSER_STATUS } from '../../model/orderStatus.js';
+import { ORDER_STATUS } from '../../model/orderStatus.js';
 
 afterAll(async () => {
   await sequelize.close();
@@ -12,17 +12,20 @@ afterAll(async () => {
 
 describe('servie - 주문 목록 조회', () => {
   it('성공했을 때 - parameter가 없는 경우', async () => {
-    const result = await orderService.getOrders();
+    const result = await orderService.getOrders({ page: 0 });
     expect(result).not.toEqual([]);
   });
 
   it('성공했을 때 - 주문자명 검색', async () => {
-    const result = await orderService.getOrders({ name: 'test1' });
+    const result = await orderService.getOrders({ name: 'test1', page: 0 });
     expect(result).not.toEqual([]);
   });
 
   it('성공했을 때 - 주문상태 검색', async () => {
-    const result = await orderService.getOrders({ orderStatus: 'cancel' });
+    const result = await orderService.getOrders({
+      orderStatus: 'cancel',
+      page: 0,
+    });
     expect(result).not.toEqual([]);
   });
 
@@ -30,6 +33,7 @@ describe('servie - 주문 목록 조회', () => {
     const result = await orderService.getOrders({
       startDate: '20220101',
       endDate: '20221103',
+      page: 0,
     });
     expect(result).not.toEqual([]);
   });
@@ -38,6 +42,7 @@ describe('servie - 주문 목록 조회', () => {
     const result = await orderService.getOrders({
       name: 'test1',
       orderStatus: 'cancel',
+      page: 0,
     });
     expect(result).not.toEqual([]);
   });
@@ -47,6 +52,7 @@ describe('servie - 주문 목록 조회', () => {
       name: 'test1',
       startDate: '20220101',
       endDate: '20221103',
+      page: 0,
     });
     expect(result).not.toEqual([]);
   });
@@ -56,6 +62,7 @@ describe('servie - 주문 목록 조회', () => {
       orderStatus: 'cancel',
       startDate: '20220101',
       endDate: '20221103',
+      page: 0,
     });
     expect(result).not.toEqual([]);
   });
@@ -66,6 +73,7 @@ describe('servie - 주문 목록 조회', () => {
       startDate: '20220101',
       endDate: '20221103',
       name: 'test1',
+      page: 0,
     });
     expect(result).not.toEqual([]);
   });
@@ -91,23 +99,23 @@ describe('service - 주문상태 수정', () => {
 
   it('실패했을 때 - 주문번호 값 불량', async () => {
     expect(async () => {
-      await orderService.updateOrderStatus(2, ORSER_STATUS.SEND);
+      await orderService.updateOrderStatus(2, ORDER_STATUS.SEND);
     }).rejects.toThrowError(new NotFoundException('잘못된 요청입니다.'));
   });
 
   it('성공했을 때 - 결제완료', async () => {
     const result = await orderService.updateOrderStatus(
       5,
-      ORSER_STATUS.COMPLITE
+      ORDER_STATUS.COMPLITE
     );
     expect(result).not.toEqual([]);
   });
   it('성공했을 때 - 결제취소', async () => {
-    const result = await orderService.updateOrderStatus(5, ORSER_STATUS.CANCEL);
+    const result = await orderService.updateOrderStatus(5, ORDER_STATUS.CANCEL);
     expect(result).not.toEqual([]);
   });
   it('성공했을 때 - 배송처리', async () => {
-    const result = await orderService.updateOrderStatus(5, ORSER_STATUS.SEND);
+    const result = await orderService.updateOrderStatus(5, ORDER_STATUS.SEND);
     expect(result).not.toEqual([]);
   });
 });
