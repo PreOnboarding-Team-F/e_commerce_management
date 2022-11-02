@@ -1,5 +1,5 @@
 import orderStatusRepository from '../model/orderStatus.js';
-import { ORSER_STATUS } from '../model/orderStatus.js';
+import { ORDER_STATUS } from '../model/orderStatus.js';
 import orderRepository from '../model/order.js';
 import userRepository from '../model/user.js';
 import { BadRequestException } from '../util/exception/badRequest.exception.js';
@@ -35,8 +35,8 @@ async function updateOrderStatus(id, orderStatus) {
   if (!order) {
     throw new NotFoundException('잘못된 요청입니다.');
   }
-  await orderRepository.updateOrderStatus(id, orderStatusId.id);
-  if (ORSER_STATUS.SEND === orderStatus) {
+  const result = await orderRepository.updateOrderStatus(id, orderStatusId.id);
+  if (ORDER_STATUS.SEND === orderStatus && result[0] === 1) {
     await orderRepository.updateDeliveryNum(id, makeDeliveryNum());
   }
 }
