@@ -35,10 +35,10 @@
 | Order |  | POST | /orders/  |                 
 |  |   | POST | /orders/  | 
 |  | 배송상태변경  | PATCH  | /orders/:id/delivery  |
-| Board | 자유게시판 글 목록  | GET  | /board/free  | 
-|  | 공지사항 글 목록  | GET  | /board/notice  |
-|  | 운영게시판 글 목록 | GET  | /board/operation | true |
-|  | 자유게시판 글 상세  | GET  | /board/free/:id  |
+| Coupon |  쿠폰생성  | POST | /coupon/create  | 
+|  | 쿠폰 발급 | POST  | /coupon/ |
+|  | 쿠폰 사용 | PATCH  | /coupon/ |  |
+|  |   |   |   |
 |  | 공지사항 글 상세  | GET  | /board/notice/:id |
 |  | 운영게시판 글 상세  | GET  | /board/operation/:id | true |
 |  | 글 작성  | POST  | /board/post | true |
