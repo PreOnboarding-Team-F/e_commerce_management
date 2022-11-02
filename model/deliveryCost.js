@@ -29,7 +29,7 @@ class DeliveryCost extends Model {
   }
   static associate(models) {
     models.DeliveryCost.belongsTo(models.Country, {
-      foreignKey: 'countryId',
+      foreignKey: { name: 'countryId', allowNull: false },
     });
   }
 }

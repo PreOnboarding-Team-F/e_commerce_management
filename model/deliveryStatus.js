@@ -1,5 +1,10 @@
 import { Model } from 'sequelize';
 
+export const DELIEVERY_STATUS = {
+  START: '발송처리',
+  ING: '배송중',
+  COMPLITED: '배송완료',
+};
 class DeliveryStatus extends Model {
   static init(sequelize, DataTypes) {
     super.init(
@@ -25,6 +30,9 @@ class DeliveryStatus extends Model {
     );
   }
   static associate(models) {}
+  static async findByType(type) {
+    return await DeliveryStatus.findOne({ where: { type } });
+  }
 }
 
 export default DeliveryStatus;

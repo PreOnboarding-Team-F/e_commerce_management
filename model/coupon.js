@@ -44,7 +44,10 @@ class Coupon extends Model {
   }
   static associate(models) {
     models.Coupon.belongsTo(models.CouponStatus, {
-      foreignKey: 'couponStatusId',
+      foreignKey: {
+        name: 'couponStatusId',
+        allowNull: false,
+      },
     });
   }
 }

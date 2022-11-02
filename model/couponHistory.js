@@ -25,10 +25,10 @@ class CouponHistory extends Model {
   }
   static associate(models) {
     models.CouponHistory.belongsTo(models.User, {
-      foreignKey: 'userId',
+      foreignKey: { name: 'userId', allowNull: false },
     });
     models.CouponHistory.belongsTo(models.Coupon, {
-      foreignKey: 'couponId',
+      foreignKey: { name: 'couponId', allowNull: false },
     });
   }
 }

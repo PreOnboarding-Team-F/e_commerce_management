@@ -19,7 +19,6 @@ class Country extends Model {
         number: {
           type: DataTypes.INTEGER,
           allowNull: false,
-          unique: true,
         },
         name: {
           type: DataTypes.STRING(50),
