@@ -129,21 +129,6 @@ describe('contoller - 주문 목록 조회', () => {
       new BadRequestException('주문날짜 시작과 끝을 모두 보내주세요')
     );
   });
-
-  it('실패했을 때 - 날짜 형식이 안 맞는 경우', async () => {
-    const request = httpMocks.createRequest({
-      url: '/orders?startdate=20220101&enddate=2022110',
-      method: 'GET',
-    });
-    const response = httpMocks.createResponse();
-    orderService.getOrders = jest.fn();
-
-    expect(
-      async () => await orderController.getOrders(request, response)
-    ).rejects.toThrowError(
-      new BadRequestException('주문날짜 시작과 끝을 모두 보내주세요')
-    );
-  });
 });
 
 describe('contoller - 주문 상태 변경', () => {
