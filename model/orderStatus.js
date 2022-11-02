@@ -1,7 +1,7 @@
 import { Model, Op } from 'sequelize';
 
-export const ORSER_STATUS = {
-  CANCEL: 'cansel',
+export const ORDER_STATUS = {
+  CANCEL: 'cancel',
   COMPLITE: 'complete',
   SEND: 'send',
 };

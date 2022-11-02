@@ -76,7 +76,7 @@ class Order extends Model {
     });
   }
   static async updateOrderStatus(id, orderStatusId) {
-    await Order.update(
+    return await Order.update(
       { orderStatusId: orderStatusId },
       {
         where: {

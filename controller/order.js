@@ -9,14 +9,6 @@ async function getOrders(req, res) {
   const page = req.query?.page ? req.query.page : 0;
   if (!startDate ^ !endDate) {
     throw new BadRequestException('주문날짜 시작과 끝을 모두 보내주세요');
-  } else {
-    if (
-      startDate &&
-      endDate &&
-      (startDate.length !== 8 || endDate.length !== 8)
-    ) {
-      throw new BadRequestException('주문날짜 시작과 끝을 모두 보내주세요');
-    }
   }
   const data = await ordersService.getOrders({
     name,
