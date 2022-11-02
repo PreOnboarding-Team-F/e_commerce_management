@@ -3,7 +3,6 @@ import {
   NotFoundException,
 } from '../../util/exception/index.js';
 import couponService from '../../service/coupon.js';
-// import Order from '../../model/order.js';
 import Coupon from '../../model/coupon.js';
 import CouponHistory from '../../model/couponHistory.js';
 
@@ -65,7 +64,7 @@ describe('Service couponCreate', () => {
 });
 
 describe('Service giveCouponToUser', () => {
-  it('Fail: 쿠폰이 없는 경우', () => {
+  it('Fail: 발급 하려는 쿠폰이 없는 경우', () => {
     const couponId = 1;
     const userId = 1;
     Coupon.getCouponInfo = jest.fn();
