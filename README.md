@@ -29,7 +29,8 @@
 
 
 ## API 문서
-자세한 내용은 Docs 참조
+자세한 내용은 아래 링크 참조<br>
+[POSTMAN DOCS](https://documenter.getpostman.com/view/11539438/2s8YRnkWiD#8b0f3499-8cba-4187-8711-17946a6c572a).
 | 기능구분  | 기능  | Method | URL | 
 | ------------- | ------------- | ------------- | ------------- | 
 | Order | 주문목록조회 | GET | /orders?name=유저이름&orderstatus=주문상태&startdate=시작시간&enddate=끝시간  |                 
