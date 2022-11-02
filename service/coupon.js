@@ -122,7 +122,6 @@ const useCoupon = async (
        * 유저가 쿠폰을 가지고 있는 쿠폰의 정보를 가지고 와서 쿠폰 타입과 할인율을 가져옵니다.
        */
 
-      // model raw: true 참고
       const getCouponInfo = await Coupon.getCouponInfo(couponId);
       const couponType = getCouponInfo.dataValues['couponStatusId'];
       const discountCost = getCouponInfo.dataValues['discountRate'];
@@ -162,7 +161,6 @@ const useCoupon = async (
        * 국가가 대한민국이 아니면 환율 적용 후 소수점 반올림을 합니다.
        */
 
-      // DB에서 대한민국 가져오기.
       if (countryId !== 191) {
         discountPrice = Math.round(discountPrice / 1200);
         discountDeliveryCost = Math.round(discountDeliveryCost / 1200);
