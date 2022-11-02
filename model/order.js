@@ -1,4 +1,4 @@
-import { Model } from 'sequelize';
+import { Model, Op, Sequelize } from 'sequelize';
 
 class Order extends Model {
   static init(sequelize, DataTypes) {
@@ -74,6 +74,53 @@ class Order extends Model {
       },
     });
   }
+  static async updateOrderStatus(id, orderStatusId) {
+    await Order.update(
+      { orderStatusId: orderStatusId },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+  }
+  static async updateDeliveryNum(id, deliveryNum) {
+    await Order.update(
+      { deliveryNum: deliveryNum },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+  }
+  static async getOrders(search, orderStatus, user) {
+    let where = {
+      [Op.and]: {},
+    };
+    if (search?.name) {
+      where[Op.and]['$User.name$'] = search.name;
+    }
+    if (search?.orderStatusId) {
+      where[Op.and].orderStatusId = search.orderStatusId.id;
+    }
+    if (search?.startDate) {
+      where[Op.and]['order_date'] = {
+        [Op.between]: [search.startDate, search.endDate],
+      };
+    }
+    return await Order.findAll({
+      include: [
+        { model: orderStatus, attributes: ['type'] },
+        { model: user, attributes: ['name', 'email', 'phoneNum'] },
+      ],
+      where,
+      offset: search.page * 10,
+      limit: 10,
+      raw: true,
+      nest: true,
+    });
+  }
 
   static async findById(id) {
     return await Order.findOne({ where: { id } });
@@ -82,5 +129,4 @@ class Order extends Model {
     await order.update({ deliveryStatusId: deliveryStatus.id });
   }
 }
-
 export default Order;

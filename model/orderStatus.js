@@ -1,4 +1,10 @@
-import { Model } from 'sequelize';
+import { Model, Op } from 'sequelize';
+
+export const ORSER_STATUS = {
+  CANCEL: 'cansel',
+  COMPLITE: 'complete',
+  SEND: 'send',
+};
 
 class OrderStatus extends Model {
   static init(sequelize, DataTypes) {
@@ -25,6 +31,14 @@ class OrderStatus extends Model {
     );
   }
   static associate(models) {}
+
+  static async getIdByType(type) {
+    return await this.findOne({
+      attributes: ['id'],
+      where: { type: { [Op.like]: type } },
+      raw: true,
+    });
+  }
 }
 
 export default OrderStatus;
