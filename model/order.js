@@ -119,8 +119,12 @@ class Order extends Model {
       nest: true,
     });
   }
+
   static async findById(id) {
     return await Order.findOne({ where: { id } });
+  }
+  static async updateDeliveryStatus(order, deliveryStatus) {
+    await order.update({ deliveryStatusId: deliveryStatus.id });
   }
 }
 export default Order;
