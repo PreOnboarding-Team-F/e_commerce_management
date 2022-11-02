@@ -54,7 +54,7 @@ const createCoupon = async (discountRate, quantity, couponStatusId) => {
     throw new NotFoundException('이미 존재하는 쿠폰 입니다.');
   }
 
-  Coupon.createCoupon(discountRate, code, quantity, couponStatusId);
+  await Coupon.createCoupon(discountRate, code, quantity, couponStatusId);
 };
 
 /**
@@ -81,7 +81,6 @@ const giveCouponToUser = async (couponId, userId) => {
     userId,
     couponId
   );
-  console.log(isExistCouponToUser);
 
   if (isExistCouponToUser) {
     const notUseCoupon = isExistCouponToUser.dataValues['useDate'];
@@ -122,6 +121,7 @@ const useCoupon = async (
       /**
        * 유저가 쿠폰을 가지고 있는 쿠폰의 정보를 가지고 와서 쿠폰 타입과 할인율을 가져옵니다.
        */
+
       const getCouponInfo = await Coupon.getCouponInfo(couponId);
       const couponType = getCouponInfo.dataValues['couponStatusId'];
       const discountCost = getCouponInfo.dataValues['discountRate'];
@@ -160,6 +160,7 @@ const useCoupon = async (
       /**
        * 국가가 대한민국이 아니면 환율 적용 후 소수점 반올림을 합니다.
        */
+
       if (countryId !== 191) {
         discountPrice = Math.round(discountPrice / 1200);
         discountDeliveryCost = Math.round(discountDeliveryCost / 1200);
