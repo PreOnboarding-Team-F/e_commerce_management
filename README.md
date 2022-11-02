@@ -1,5 +1,4 @@
 # e_commerce_management
-# community_service
 ## 프로젝트 개요
 
 **제품 쇼핑몰 관리 Rest API 입니다.**
@@ -31,11 +30,11 @@
 
 ## API 문서
 자세한 내용은 Docs 참조
-| 기능구분  | 기능  | Method | URL | header token 여부 |
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-| User | 회원가입 | POST | /user/register  |                 
-|  | 로그인  | POST | /user/login  | 
-|  | 탈퇴  | PATCH  | /user/withdraw  | true |
+| 기능구분  | 기능  | Method | URL | 
+| ------------- | ------------- | ------------- | ------------- | 
+| Order |  | POST | /orders/  |                 
+|  |   | POST | /orders/  | 
+|  | 배송상태변경  | PATCH  | /orders/:id/delivery  |
 | Board | 자유게시판 글 목록  | GET  | /board/free  | 
 |  | 공지사항 글 목록  | GET  | /board/notice  |
 |  | 운영게시판 글 목록 | GET  | /board/operation | true |
