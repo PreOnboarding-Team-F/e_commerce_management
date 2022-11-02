@@ -38,12 +38,16 @@ class Coupon extends Model {
       {
         sequelize,
         tableName: 'coupons',
+        timestamps: false,
       }
     );
   }
   static associate(models) {
     models.Coupon.belongsTo(models.CouponStatus, {
-      foreignKey: 'couponStatusId',
+      foreignKey: {
+        name: 'couponStatusId',
+        allowNull: false,
+      },
     });
   }
 }

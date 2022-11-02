@@ -47,16 +47,31 @@ class Order extends Model {
   }
   static associate(models) {
     models.Order.belongsTo(models.OrderStatus, {
-      foreignKey: 'orderStatusId',
+      foreignKey: {
+        name: 'orderStatusId',
+        allowNull: false,
+        field: 'order_status_id',
+      },
     });
     models.Order.belongsTo(models.Country, {
-      foreignKey: 'countryId',
+      foreignKey: {
+        name: 'countryId',
+        allowNull: false,
+        field: 'country_id',
+      },
     });
     models.Order.belongsTo(models.User, {
-      foreignKey: 'userId',
+      foreignKey: {
+        name: 'userId',
+        allowNull: false,
+        field: 'user_id',
+      },
     });
     models.Order.belongsTo(models.DeliveryStatus, {
-      foreignKey: 'deliveryStatusId',
+      foreignKey: {
+        name: 'deliveryStatusId',
+        field: 'delivery_status_id',
+      },
     });
   }
 
