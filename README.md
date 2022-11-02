@@ -34,13 +34,13 @@
 | 기능구분  | 기능  | Method | URL | 
 | ------------- | ------------- | ------------- | ------------- | 
 | Order | 주문목록조회 | GET | /orders?name=유저이름&orderstatus=주문상태&startdate=시작시간&enddate=끝시간  |                 
-|  | 주문상태변경  | PATCH | /orders/:id  | 
-|  | 배송상태변경  | PATCH  | /orders/:id/delivery  |
+|  | 주문상태변경 | PATCH | /orders/:id  | 
+|  | 배송상태변경 | PATCH  | /orders/:id/delivery  |
 | Coupon |  쿠폰생성  | POST | /coupon/create  | 
 |  | 쿠폰 발급 | POST  | /coupon/ |
 |  | 쿠폰 사용 | PATCH  | /coupon/ |  |
 
- 주문목록조회 쿼리파라미터는 name / orderstatus / startdate, enddate 각각 조합하거나 없어도 가능합니다.
+ > 주문목록조회 쿼리파라미터는 name / orderstatus / startdate, enddate 각각 조합하거나 없어도 가능합니다.
 
 ## 구현 기능 관련
 <b>제품 주문 배송 관련</b>
