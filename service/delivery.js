@@ -12,5 +12,5 @@ export const updateDeliveryStatus = async (orderId, deliveryStatus) => {
   if (!status) {
     throw new BadRequestException('유효하지 않은 값입니다.');
   }
-  Order.updateDeliveryStatus(order, status);
+  Order.updateDeliveryStatus(order.id, status.id);
 };
