@@ -7,20 +7,29 @@ const createCoupon = async (req, res) => {
   res.status(201).json({ message: 'CREATE COUPON' });
 };
 
-const giveCouponTOuser = async (req, res) => {
+const giveCouponToUser = async (req, res) => {
   const { couponId, userId } = req.body;
-  await couponService.giveCouponTOuser(couponId, userId);
+  await couponService.giveCouponToUser(couponId, userId);
   res.status(201).json({ message: 'GIVE COUPON TO USER' });
 };
 
 const useCoupon = async (req, res) => {
-  const { couponId, userId } = req.body;
-  await couponService.useCoupon(couponId, userId);
+  const { couponId, userId, countryId, price, quantity, city, buyrZipx } =
+    req.body;
+  await couponService.useCoupon(
+    couponId,
+    userId,
+    countryId,
+    price,
+    quantity,
+    city,
+    buyrZipx
+  );
   res.status(200).json({ message: 'USE COUPON' });
 };
 
 export default {
   createCoupon,
-  giveCouponTOuser,
+  giveCouponToUser,
   useCoupon,
 };

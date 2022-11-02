@@ -80,6 +80,23 @@ class Coupon extends Model {
       },
     });
   }
+  static async updateCouponQuantity(
+    couponId,
+    resultCouponQuantity,
+    resultCouponUseNum,
+    resultCouponDiscountPrice
+  ) {
+    await Coupon.update(
+      {
+        quantity: resultCouponQuantity,
+        useNum: resultCouponUseNum,
+        totalDiscountPrice: resultCouponDiscountPrice,
+      },
+      {
+        where: { id: couponId },
+      }
+    );
+  }
 }
 
 export default Coupon;

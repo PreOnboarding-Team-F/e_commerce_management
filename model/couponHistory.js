@@ -1,4 +1,5 @@
 import { Model } from 'sequelize';
+import { Op } from 'sequelize';
 
 class CouponHistory extends Model {
   static init(sequelize, DataTypes) {
@@ -38,10 +39,22 @@ class CouponHistory extends Model {
       couponId,
     });
   };
-  static userCouponInfo = async userId => {
+  static userCouponInfo = async (userId, couponId) => {
     return await CouponHistory.findOne({
-      where: { userId: userId },
+      where: {
+        [Op.and]: [{ userId: userId }, { couponId: couponId }],
+      },
     });
+  };
+  static useToday = async (userId, couponId, today) => {
+    await CouponHistory.update(
+      {
+        useDate: today,
+      },
+      {
+        where: { [Op.and]: [{ userId: userId }, { couponId: couponId }] },
+      }
+    );
   };
 }
 

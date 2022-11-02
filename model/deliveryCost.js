@@ -1,4 +1,5 @@
 import { Model } from 'sequelize';
+import { Op } from 'sequelize';
 
 class DeliveryCost extends Model {
   static init(sequelize, DataTypes) {
@@ -22,6 +23,7 @@ class DeliveryCost extends Model {
       },
       {
         sequelize,
+        timestamps: false,
         tableName: 'delivery_cost',
         timestamps: false,
       }
@@ -32,6 +34,13 @@ class DeliveryCost extends Model {
       foreignKey: { name: 'countryId', allowNull: false },
     });
   }
+  static getCostToDelivery = async (countryId, quantity) => {
+    return await DeliveryCost.findOne({
+      where: {
+        [Op.and]: [{ countryId: countryId }, { quantity: quantity }],
+      },
+    });
+  };
 }
 
 export default DeliveryCost;
