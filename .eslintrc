@@ -4,6 +4,7 @@
     "sourceType": "module",
     "allowImportExportEverywhere": true
   },
+  "parser": "babel-eslint",
   "extends": ["plugin:prettier/recommended"],
   "rules": {
     "no-var": "warn",

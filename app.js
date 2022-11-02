@@ -1,11 +1,12 @@
 import 'express-async-errors';
 
 import cors from 'cors';
-import dotenv from 'dotenv';
+import { errorHandler } from './middleware/errorHandler.js';
+import { exceptionErrorHandler } from './middleware/globalErrorHandler.js';
 import express from 'express';
 import morgan from 'morgan';
-
-dotenv.config();
+import { notFoundHandler } from './middleware/notFoundHandler.js';
+import routes from './route/index.js';
 
 const createApp = () => {
   const app = express();
@@ -18,7 +19,9 @@ const createApp = () => {
   app.use(express.json());
   app.use(routes);
   // Error Middleware
-
+  app.use(notFoundHandler);
+  app.use(exceptionErrorHandler);
+  app.use(errorHandler);
   return app;
 };
 
