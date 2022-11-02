@@ -115,6 +115,8 @@ class Order extends Model {
         { model: user, attributes: ['name', 'email', 'phoneNum'] },
       ],
       where,
+      offset: search.page * 10,
+      limit: 10,
       raw: true,
       nest: true,
     });

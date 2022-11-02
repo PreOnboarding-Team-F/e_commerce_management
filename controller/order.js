@@ -6,6 +6,7 @@ async function getOrders(req, res) {
   const startDate = req.query?.startdate;
   const endDate = req.query?.enddate;
   const orderStatus = req.query.orderstatus;
+  const page = req.query?.page ? req.query.page : 0;
   if (!startDate ^ !endDate) {
     throw new BadRequestException('주문날짜 시작과 끝을 모두 보내주세요');
   } else {
@@ -22,6 +23,7 @@ async function getOrders(req, res) {
     startDate,
     endDate,
     orderStatus,
+    page,
   });
   res.status(200).send({ data });
 }
