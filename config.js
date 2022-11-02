@@ -8,7 +8,8 @@ const config = {
     database: process.env.DB_NAME,
     dialect: process.env.DB,
   },
-  port: process.env.HOST_PORT,
+  port: process.env.PORT,
+  sync: process.env.DB_SYNC,
 };
 
 export default config;
