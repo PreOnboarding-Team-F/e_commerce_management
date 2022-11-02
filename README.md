@@ -37,8 +37,8 @@
 |  | 주문상태변경 | PATCH | /orders/:id  | 
 |  | 배송상태변경 | PATCH  | /orders/:id/delivery  |
 | Coupon |  쿠폰생성  | POST | /coupon/create  | 
-|  | 쿠폰 발급 | POST  | /coupon/ |
-|  | 쿠폰 사용 | PATCH  | /coupon/ |  |
+|  | 쿠폰 발급 | POST  | /coupon |
+|  | 쿠폰 사용 | PATCH  | /coupon |  |
 
  > 주문목록조회 쿼리파라미터는 name / orderstatus / startdate, enddate 각각 조합하거나 없어도 가능합니다.
 
