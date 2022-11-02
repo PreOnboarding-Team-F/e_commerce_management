@@ -125,8 +125,8 @@ class Order extends Model {
   static async findById(id) {
     return await Order.findOne({ where: { id } });
   }
-  static async updateDeliveryStatus(order, deliveryStatus) {
-    await order.update({ deliveryStatusId: deliveryStatus.id });
+  static async updateDeliveryStatus(id, deliveryStatusId) {
+    await Order.update({ deliveryStatusId }, { where: { id } });
   }
 }
 export default Order;

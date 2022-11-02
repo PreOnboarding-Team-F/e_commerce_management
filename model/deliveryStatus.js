@@ -1,7 +1,6 @@
 import { Model } from 'sequelize';
 
 export const DELIEVERY_STATUS = {
-  START: '발송처리',
   ING: '배송중',
   COMPLITED: '배송완료',
 };

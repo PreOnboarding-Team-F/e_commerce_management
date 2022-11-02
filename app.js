@@ -7,7 +7,6 @@ import express from 'express';
 import morgan from 'morgan';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import routes from './route/index.js';
-import { sequelize } from './db/database.js';
 
 const createApp = () => {
   const app = express();
@@ -23,16 +22,6 @@ const createApp = () => {
   app.use(notFoundHandler);
   app.use(exceptionErrorHandler);
   app.use(errorHandler);
-
-  sequelize
-    .sync({ force: false })
-    .then(() => {
-      console.log('데이터베이스 연결!');
-    })
-    .catch(err => {
-      console.error(err);
-    });
-
   return app;
 };
 

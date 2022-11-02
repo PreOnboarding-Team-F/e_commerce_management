@@ -41,6 +41,6 @@ describe('order service delivery status update', () => {
     await orderService.updateDeliveryStatus(orderId, deliveryStatus);
 
     expect(Order.updateDeliveryStatus).toBeCalledTimes(1);
-    expect(Order.updateDeliveryStatus).toBeCalledWith(order, status);
+    expect(Order.updateDeliveryStatus).toBeCalledWith(order.id, status.id);
   });
 });
