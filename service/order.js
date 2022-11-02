@@ -14,7 +14,7 @@ async function getOrders(search) {
       throw new BadRequestException('주문 상태 값이 잘못되었습니다.');
     }
   }
-  if (search.startDate) {
+  if (search?.startDate) {
     search.startDate = makeDate(search.startDate);
     search.endDate = makeDate(search.endDate);
   }
