@@ -59,6 +59,34 @@ class Order extends Model {
     });
   }
 
+  static async updateOrderStatus(id, orderStatusId) {
+    await this.update(
+      { orderStatusId: orderStatusId },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+  }
+  static async updateDeliveryNum(id, deliveryNum) {
+    await this.update(
+      { deliveryNum: deliveryNum },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+  }
+  static async findById(id) {
+    return await this.findOne({
+      where: {
+        id: id,
+      },
+    });
+  }
+
   static async getOrders(search, orderStatus, user) {
     let where = {
       [Op.and]: {},
@@ -76,7 +104,7 @@ class Order extends Model {
     }
     return await this.findAll({
       include: [
-        { model: orderStatus, attributes: ['id'] },
+        { model: orderStatus, attributes: ['type'] },
         { model: user, attributes: ['name', 'email', 'phoneNum'] },
       ],
       where,

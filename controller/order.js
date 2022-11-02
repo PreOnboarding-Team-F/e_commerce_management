@@ -26,6 +26,14 @@ async function getOrders(req, res) {
   res.status(200).send({ data });
 }
 
+async function updateOrderStatus(req, res) {
+  const id = req.params.id;
+  const { orderStatus } = req.body;
+  await ordersService.updateOrderStatus(id, orderStatus);
+  res.status(200).send({ message: 'UPDATE SUCCESS' });
+}
+
 export default {
   getOrders,
+  updateOrderStatus,
 };
