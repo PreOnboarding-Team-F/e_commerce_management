@@ -13,8 +13,8 @@ async function getOrders(search) {
     }
   }
   if (search.startDate) {
-    search.startDate = makeStartDate(search.startDate);
-    search.endDate = makeEndDate(search.endDate);
+    search.startDate = makeDate(search.startDate);
+    search.endDate = makeDate(search.endDate);
   }
   const data = await orderRepository.getOrders(
     search,
@@ -24,24 +24,11 @@ async function getOrders(search) {
   return data;
 }
 
-function makeStartDate(date) {
+function makeDate(date) {
   return new Date(
-    date.substr(0, 4),
-    date.substr(4, 2) - 1,
-    date.substr(6, 2),
-    0,
-    0,
-    0
-  );
-}
-function makeEndDate(date) {
-  return new Date(
-    date.substr(0, 4),
-    date.substr(4, 2) - 1,
-    date.substr(6, 2),
-    23,
-    59,
-    59
+    Number(date.substr(0, 4)),
+    Number(date.substr(4, 2) - 1),
+    Number(date.substr(6, 2))
   );
 }
 

@@ -12,7 +12,7 @@ class Order extends Model {
           unique: true,
         },
         orderDate: {
-          type: DataTypes.DATE,
+          type: DataTypes.DATEONLY,
           allowNull: false,
           field: 'order_date',
         },
