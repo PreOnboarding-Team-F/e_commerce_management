@@ -32,26 +32,14 @@
 자세한 내용은 Docs 참조
 | 기능구분  | 기능  | Method | URL | 
 | ------------- | ------------- | ------------- | ------------- | 
-| Order |  | POST | /orders/  |                 
-|  |   | POST | /orders/  | 
+| Order | 주문목록조회 | GET | /orders?name=유저이름&orderstatus=주문상태&startdate=시작시간&enddate=끝시간  |                 
+|  | 주문상태변경  | PATCH | /orders/:id  | 
 |  | 배송상태변경  | PATCH  | /orders/:id/delivery  |
 | Coupon |  쿠폰생성  | POST | /coupon/create  | 
 |  | 쿠폰 발급 | POST  | /coupon/ |
 |  | 쿠폰 사용 | PATCH  | /coupon/ |  |
-|  |   |   |   |
-|  | 공지사항 글 상세  | GET  | /board/notice/:id |
-|  | 운영게시판 글 상세  | GET  | /board/operation/:id | true |
-|  | 글 작성  | POST  | /board/post | true |
-|  | 글 수정  | PATCH  | /board/post/:id | true |
-|  | 글 삭제  | DELETE  | /board/post/:id | true |
-| Comment | 댓글 목록  | GET  | /comment/post?boardId={value}  | 
-|  | 댓글 작성  | POST  | /comment/post?boardId=value  | true |
-|  | 댓글 수정  | PATCH  | /comment/post?boardId=value  | true |
-|  | 댓글 삭제  | DELETE  | /comment/post?boardId=value  | true |
-| 통계 | 성별  | GET  | /statistics/gender  | true |
-|  | 나이  | GET  | /statistics/age  | true |
-|  | 접속시간 | GET  | /statistics/accesstime  | true |
-|  | 방문횟수 | GET  | /statistics/visit  | true |
+
+ 주문목록조회 쿼리파라미터는 name / orderstatus / startdate, enddate 각각 조합하거나 없어도 가능합니다.
 
 ## 구현 기능 관련
 <b>제품 주문 배송 관련</b>
