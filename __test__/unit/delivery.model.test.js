@@ -16,14 +16,16 @@ describe('order model findById', () => {
 
 describe('order model delivery status update', () => {
   it('성공 했을 때', async () => {
-    const order = { update: jest.fn() };
-    const deliveryStatus = {};
+    const id = 1;
+    const deliveryStatusId = 1;
 
-    await Order.updateDeliveryStatus(order, deliveryStatus);
+    Order.update = jest.fn();
+    await Order.updateDeliveryStatus(id, deliveryStatusId);
 
-    expect(order.update).toBeCalledTimes(1);
-    expect(order.update).toBeCalledWith({
-      deliveryStatusId: deliveryStatus.id,
-    });
+    expect(Order.update).toBeCalledTimes(1);
+    expect(Order.update).toBeCalledWith(
+      { deliveryStatusId },
+      { where: { id } }
+    );
   });
 });
