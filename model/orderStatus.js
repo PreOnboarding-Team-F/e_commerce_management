@@ -1,9 +1,9 @@
 import { Model, Op } from 'sequelize';
 
 export const ORSER_STATUS = {
-  CANCEL: '결제 취소',
-  COMPLITE: '결제 완료',
-  SEND: '발송 처리',
+  CANCEL: 'cansel',
+  COMPLITE: 'complete',
+  SEND: 'send',
 };
 
 class OrderStatus extends Model {
