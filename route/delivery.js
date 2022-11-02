@@ -14,7 +14,6 @@ const deliveryStatusUpdate = [
     .trim()
     .custom(value => {
       if (
-        value === DELIEVERY_STATUS.START ||
         value === DELIEVERY_STATUS.ING ||
         value === DELIEVERY_STATUS.COMPLITED
       ) {
