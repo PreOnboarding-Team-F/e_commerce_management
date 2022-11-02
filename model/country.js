@@ -17,7 +17,7 @@ class Country extends Model {
           unique: true,
         },
         number: {
-          type: DataTypes.INTEGER,
+          type: DataTypes.STRING(10),
           allowNull: false,
         },
         name: {
@@ -28,6 +28,7 @@ class Country extends Model {
       },
       {
         sequelize,
+        timestamps: false,
         tableName: 'countries',
         timestamps: false,
       }

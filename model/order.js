@@ -40,6 +40,7 @@ class Order extends Model {
       },
       {
         sequelize,
+        timestamps: false,
         tableName: 'orders',
         timestamps: false,
       }
@@ -121,7 +122,26 @@ class Order extends Model {
       nest: true,
     });
   }
-
+  static createOrder = async (
+    today,
+    quantity,
+    totalPrice,
+    city,
+    buyrZipx,
+    countryId,
+    userId
+  ) => {
+    return await Order.create({
+      orderDate: today,
+      orderStatusId: 1,
+      quantity,
+      price: totalPrice,
+      city,
+      buyr_zipx: buyrZipx,
+      countryId,
+      userId,
+    });
+  };
   static async findById(id) {
     return await Order.findOne({ where: { id } });
   }

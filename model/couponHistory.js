@@ -1,4 +1,5 @@
 import { Model } from 'sequelize';
+import { Op } from 'sequelize';
 
 class CouponHistory extends Model {
   static init(sequelize, DataTypes) {
@@ -18,6 +19,7 @@ class CouponHistory extends Model {
       },
       {
         sequelize,
+        timestamps: false,
         tableName: 'coupon_histories',
         timestamps: false,
       }
@@ -31,6 +33,29 @@ class CouponHistory extends Model {
       foreignKey: { name: 'couponId', allowNull: false },
     });
   }
+  static giveCouponToUser = async (userId, couponId) => {
+    return await CouponHistory.create({
+      userId,
+      couponId,
+    });
+  };
+  static userCouponInfo = async (userId, couponId) => {
+    return await CouponHistory.findOne({
+      where: {
+        [Op.and]: [{ userId: userId }, { couponId: couponId }],
+      },
+    });
+  };
+  static useToday = async (userId, couponId, today) => {
+    await CouponHistory.update(
+      {
+        useDate: today,
+      },
+      {
+        where: { [Op.and]: [{ userId: userId }, { couponId: couponId }] },
+      }
+    );
+  };
 }
 
 export default CouponHistory;
