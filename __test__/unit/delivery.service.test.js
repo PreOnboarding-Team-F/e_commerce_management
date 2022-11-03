@@ -30,7 +30,7 @@ describe('order service delivery status update', () => {
     }).rejects.toThrowError(BadRequestException);
   });
 
-  it('성공 했을 때', async () => {
+  it('return 200 성공 했을 때', async () => {
     const orderId = 1;
     const deliveryStatus = 1;
     const order = {};
