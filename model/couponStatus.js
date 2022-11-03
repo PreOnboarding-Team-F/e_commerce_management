@@ -21,7 +21,7 @@ class CouponStatus extends Model {
         sequelize,
         timestamps: false,
         tableName: 'coupon_status',
-        timestamps: false,
+        underscored: true,
       }
     );
   }
