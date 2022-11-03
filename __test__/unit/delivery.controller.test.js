@@ -5,7 +5,7 @@ import httpMocks from 'node-mocks-http';
 
 jest.mock('../../service/delivery.js');
 describe('order controller delivery status update', () => {
-  it('성공했을 때', async () => {
+  it('return 200 성공했을 때', async () => {
     const orderId = 1;
     const deliveryStatus = 1;
     const request = httpMocks.createRequest({
