@@ -49,15 +49,3 @@ Order.associate(db);
 OrderStatus.associate(db);
 DeliveryStatus.associate(db);
 DeliveryCost.associate(db);
-
-export default {
-  Country,
-  Coupon,
-  CouponStatus,
-  CouponHistory,
-  User,
-  Order,
-  OrderStatus,
-  DeliveryStatus,
-  DeliveryCost,
-};
