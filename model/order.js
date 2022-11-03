@@ -1,4 +1,4 @@
-import { Model, Op, Sequelize } from 'sequelize';
+import { Model, Op } from 'sequelize';
 
 class Order extends Model {
   static init(sequelize, DataTypes) {
