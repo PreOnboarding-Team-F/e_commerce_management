@@ -38,7 +38,7 @@
 | ------------- | ------------- | ------------- | ------------- | 
 | Order | 주문목록조회 | GET | /orders?name=유저이름&orderstatus=주문상태&startdate=시작시간&enddate=끝시간  |                 
 |  | 주문상태변경 | PATCH | /orders/:id  | 
-|  | 배송상태변경 | PATCH  | /orders/:id/delivery  |
+|  | 배송상태변경 | PATCH  | /delivery  |
 | Coupon |  쿠폰생성  | POST | /coupon/create  | 
 |  | 쿠폰 발급 | POST  | /coupon |
 |  | 쿠폰 사용 | PATCH  | /coupon |  |
