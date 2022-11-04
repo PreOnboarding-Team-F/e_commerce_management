@@ -14,14 +14,13 @@ class CouponHistory extends Model {
         },
         useDate: {
           type: DataTypes.DATE,
-          field: 'use_date',
         },
       },
       {
         sequelize,
         timestamps: false,
         tableName: 'coupon_histories',
-        timestamps: false,
+        underscored: true,
       }
     );
   }

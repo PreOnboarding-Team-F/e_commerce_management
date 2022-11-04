@@ -28,7 +28,6 @@ class Coupon extends Model {
           type: DataTypes.INTEGER,
           default: 0,
           allowNull: false,
-          field: 'use_num',
         },
         totalDiscountPrice: {
           type: DataTypes.INTEGER,
@@ -40,7 +39,7 @@ class Coupon extends Model {
         sequelize,
         timestamps: false,
         tableName: 'coupons',
-        timestamps: false,
+        underscored: true,
       }
     );
   }
