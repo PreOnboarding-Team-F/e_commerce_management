@@ -19,7 +19,7 @@
 - DB : mysql
 
 ## DB Modeling
-![image](https://user-images.githubusercontent.com/55984573/199422920-6ed7c047-4da3-48a9-b4d3-66723e5e0595.png)
+<img width="689" alt="스크린샷 2022-11-06 오후 10 49 53" src="https://user-images.githubusercontent.com/70467297/200174677-8f99e4aa-3cdb-4377-80df-546ec001e17c.png">
 
 - coupon_status(PK:id) - coupons(FK:coupon_status_id) : 1 - N
 - coupons(PK:id) - coupon_histories(FK:coupon_id) : 1 - N
