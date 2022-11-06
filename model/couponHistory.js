@@ -18,7 +18,6 @@ class CouponHistory extends Model {
         discountCost: {
           type: DataTypes.INTEGER,
           allowNull: false,
-          field: 'discount_cost',
         },
       },
       {
