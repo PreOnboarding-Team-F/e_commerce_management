@@ -188,7 +188,12 @@ const useCoupon = async (
       const today = year + '-' + month + '-' + date;
       const totalPrice = discountPrice + discountDeliveryCost;
 
-      CouponHistory.useToday(userId, couponId, today);
+      CouponHistory.useTodayAndDiscountCost(
+        userId,
+        couponId,
+        today,
+        totalDiscount
+      );
 
       /**
        * 주문 내역을 생성합니다.
@@ -200,7 +205,8 @@ const useCoupon = async (
         city,
         buyrZipx,
         countryId,
-        userId
+        userId,
+        couponType
       );
     } else {
       throw new NotFoundException('이미 사용한 쿠폰입니다.');

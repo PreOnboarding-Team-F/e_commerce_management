@@ -37,11 +37,6 @@ class Order extends Model {
           unique: true,
           field: 'delivery_num',
         },
-        discountCost: {
-          type: DataTypes.INTEGER,
-          allowNull: false,
-          field: 'discount_cost',
-        },
       },
       {
         sequelize,
@@ -139,7 +134,8 @@ class Order extends Model {
     city,
     buyrZipx,
     countryId,
-    userId
+    userId,
+    couponType
   ) => {
     return await Order.create({
       orderDate: today,
@@ -150,6 +146,7 @@ class Order extends Model {
       buyr_zipx: buyrZipx,
       countryId,
       userId,
+      couponStatusId: couponType,
     });
   };
   static async findById(id) {

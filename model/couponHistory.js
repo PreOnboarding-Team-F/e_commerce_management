@@ -16,6 +16,11 @@ class CouponHistory extends Model {
           type: DataTypes.DATE,
           field: 'use_date',
         },
+        discountCost: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          field: 'discount_cost',
+        },
       },
       {
         sequelize,
@@ -51,10 +56,16 @@ class CouponHistory extends Model {
       where: { userId: userId },
     });
   };
-  static useToday = async (userId, couponId, today) => {
+  static useTodayAndDiscountCost = async (
+    userId,
+    couponId,
+    today,
+    totalDiscount
+  ) => {
     await CouponHistory.update(
       {
         useDate: today,
+        discountCost: totalDiscount,
       },
       {
         where: { [Op.and]: [{ userId: userId }, { couponId: couponId }] },
