@@ -2,7 +2,6 @@ import couponService from '../service/coupon.js';
 
 const createCoupon = async (req, res) => {
   const { discountRate, quantity, couponStatusId } = req.body;
-  console.log('1234');
   await couponService.createCoupon(discountRate, quantity, couponStatusId);
   res.status(201).json({ message: 'CREATE COUPON' });
 };
