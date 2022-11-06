@@ -27,4 +27,3 @@ export const stopServer = async server => {
     });
   });
 };
-startServer(config.port);
