@@ -14,7 +14,6 @@ class CouponHistory extends Model {
         },
         useDate: {
           type: DataTypes.DATE,
-          field: 'use_date',
         },
         discountCost: {
           type: DataTypes.INTEGER,
@@ -25,7 +24,7 @@ class CouponHistory extends Model {
       {
         sequelize,
         tableName: 'coupon_histories',
-        timestamps: false,
+        underscored: true,
       }
     );
   }

@@ -1,7 +1,6 @@
 import couponController from '../../controller/coupon.js';
 import couponService from '../../service/coupon.js';
 import httpMocks from 'node-mocks-http';
-import { fn } from 'sequelize';
 
 jest.mock('../../service/coupon.js');
 
