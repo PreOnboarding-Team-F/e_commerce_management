@@ -76,6 +76,9 @@
 ## Unit test 및 Integration test 구현
 <img width="401" alt="image" src="https://user-images.githubusercontent.com/55984573/200171119-540f214a-cac5-4f74-90f1-d44cb886f0a9.png">
 
+추후 구매하기 API를 추가를 위한 테스트 코드 구현 
+<img width="580" alt="image" src="https://user-images.githubusercontent.com/55984573/200184748-9f513213-cc28-4f91-a9e4-0802406dd14a.png">
+
 ## 설치 및 실행 방법
 nodejs와 npm이 install 되어있지 않다면 먼저 install 과정 진행
 <details>
