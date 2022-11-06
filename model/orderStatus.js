@@ -26,8 +26,8 @@ class OrderStatus extends Model {
       {
         sequelize,
         tableName: 'order_status',
-        timestamps: false,
         underscored: true,
+        timestamps: false,
       }
     );
   }
