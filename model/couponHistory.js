@@ -15,10 +15,13 @@ class CouponHistory extends Model {
         useDate: {
           type: DataTypes.DATE,
         },
+        discountCost: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
       },
       {
         sequelize,
-        timestamps: false,
         tableName: 'coupon_histories',
         underscored: true,
       }
@@ -45,16 +48,33 @@ class CouponHistory extends Model {
       },
     });
   };
-  static useToday = async (userId, couponId, today) => {
+  static isExistCouponToUser = async userId => {
+    return await CouponHistory.findOne({
+      where: { userId: userId },
+    });
+  };
+  static useTodayAndDiscountCost = async (
+    userId,
+    couponId,
+    today,
+    totalDiscount
+  ) => {
     await CouponHistory.update(
       {
         useDate: today,
+        discountCost: totalDiscount,
       },
       {
         where: { [Op.and]: [{ userId: userId }, { couponId: couponId }] },
       }
     );
   };
+  static async getCouponHistory() {
+    return await CouponHistory.findAll({
+      attributes: ['id', 'userId', 'couponId'],
+      where: { useDate: null },
+    });
+  }
 }
 
 export default CouponHistory;

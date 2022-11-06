@@ -37,7 +37,6 @@ class Coupon extends Model {
       },
       {
         sequelize,
-        timestamps: false,
         tableName: 'coupons',
         underscored: true,
       }
@@ -95,6 +94,17 @@ class Coupon extends Model {
         where: { id: couponId },
       }
     );
+  }
+  static async couponTypeDiscount() {
+    return await Coupon.findAll({
+      attributes: [
+        'id',
+        'discountRate',
+        'couponStatusId',
+        'useNum',
+        'totalDiscountPrice',
+      ],
+    });
   }
 }
 

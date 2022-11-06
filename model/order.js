@@ -37,7 +37,6 @@ class Order extends Model {
       },
       {
         sequelize,
-        timestamps: false,
         tableName: 'orders',
         underscored: true,
       }
@@ -68,23 +67,29 @@ class Order extends Model {
         name: 'deliveryStatusId',
       },
     });
+    models.Order.belongsTo(models.CouponHistory, {
+      foreignKey: {
+        name: 'couponHistoryId',
+        field: 'coupon_history_id',
+      },
+    });
   }
   static async updateOrderStatus(id, orderStatusId) {
     return await Order.update(
-      { orderStatusId: orderStatusId },
+      { orderStatusId },
       {
         where: {
-          id: id,
+          id,
         },
       }
     );
   }
   static async updateDeliveryNum(id, deliveryNum) {
     await Order.update(
-      { deliveryNum: deliveryNum },
+      { deliveryNum },
       {
         where: {
-          id: id,
+          id,
         },
       }
     );
@@ -123,7 +128,8 @@ class Order extends Model {
     city,
     buyrZipx,
     countryId,
-    userId
+    userId,
+    couponType
   ) => {
     return await Order.create({
       orderDate: today,
@@ -134,6 +140,7 @@ class Order extends Model {
       buyr_zipx: buyrZipx,
       countryId,
       userId,
+      couponStatusId: couponType,
     });
   };
   static async findById(id) {
