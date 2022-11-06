@@ -25,6 +25,7 @@ class DeliveryCost extends Model {
         sequelize,
         tableName: 'delivery_cost',
         underscored: true,
+        timestamps: false,
       }
     );
   }

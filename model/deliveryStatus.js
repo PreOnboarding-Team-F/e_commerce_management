@@ -24,6 +24,7 @@ class DeliveryStatus extends Model {
       {
         sequelize,
         tableName: 'delivery_status',
+        underscored: true,
         timestamps: false,
       }
     );
