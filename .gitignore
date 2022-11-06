@@ -1,5 +1,5 @@
 node_modules
-.env
+.env*
 coverage
 .env.test
 .DS_Store
