@@ -25,7 +25,7 @@
 - coupons(PK:id) - coupon_histories(FK:coupon_id) : 1 - N
 - users(PK:id) - coupon_histories(user_id:FK) : 1 - N
 - users(PK:id) - orders(user_id:FK) : 1 - N
-- orders(PK:id) - coupon_histories(order_id:FK) : 1 - 1
+- orders(PK:id) - coupon_histories(order_id:FK) : 1 - N
 - order_status(PK:id) - orders(FK:order_status_id) : 1 - N
 - delivery_status(PK:id) - orders(FK:delivery_status_id) : 1 - N
 - countries(PK:id) - orders(FK:country_id) : 1 - N
