@@ -2,7 +2,7 @@ import couponService from '../service/coupon.js';
 
 const createCoupon = async (req, res) => {
   const { discountRate, quantity, couponStatusId } = req.body;
-
+  console.log('1234');
   await couponService.createCoupon(discountRate, quantity, couponStatusId);
   res.status(201).json({ message: 'CREATE COUPON' });
 };
@@ -28,8 +28,20 @@ const useCoupon = async (req, res) => {
   res.status(200).json({ message: 'USE COUPON' });
 };
 
+const getCouponHistory = async (req, res) => {
+  const data = await couponService.getCouponHistory();
+  res.status(200).json(data);
+};
+
+const couponTypeDiscount = async (req, res) => {
+  const data = await couponService.couponTypeDiscount();
+  res.status(200).json(data);
+};
+
 export default {
   createCoupon,
   giveCouponToUser,
   useCoupon,
+  getCouponHistory,
+  couponTypeDiscount,
 };

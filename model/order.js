@@ -37,10 +37,14 @@ class Order extends Model {
           unique: true,
           field: 'delivery_num',
         },
+        discountCost: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          field: 'discount_cost',
+        },
       },
       {
         sequelize,
-        timestamps: false,
         tableName: 'orders',
         timestamps: false,
       }
@@ -72,6 +76,12 @@ class Order extends Model {
       foreignKey: {
         name: 'deliveryStatusId',
         field: 'delivery_status_id',
+      },
+    });
+    models.Order.belongsTo(models.CouponHistory, {
+      foreignKey: {
+        name: 'couponHistoryId',
+        field: 'coupon_history_id',
       },
     });
   }

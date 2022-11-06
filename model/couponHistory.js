@@ -46,6 +46,11 @@ class CouponHistory extends Model {
       },
     });
   };
+  static isExistCouponToUser = async userId => {
+    return await CouponHistory.findOne({
+      where: { userId: userId },
+    });
+  };
   static useToday = async (userId, couponId, today) => {
     await CouponHistory.update(
       {
@@ -56,6 +61,12 @@ class CouponHistory extends Model {
       }
     );
   };
+  static async getCouponHistory() {
+    return await CouponHistory.findAll({
+      attributes: ['id', 'userId', 'couponId'],
+      where: { useDate: null },
+    });
+  }
 }
 
 export default CouponHistory;
