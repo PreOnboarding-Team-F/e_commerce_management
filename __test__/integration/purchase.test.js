@@ -22,6 +22,7 @@ describe('purchase APIs', () => {
       validateStatus: null,
     });
     id = 1;
+
     await User.create({
       id,
       name: faker.name.fullName(),
@@ -46,7 +47,7 @@ describe('purchase APIs', () => {
       id: 2,
       code: 'US',
       number: 1,
-      name: 'korea',
+      name: 'america',
     });
     await DeliveryCost.create({
       id,
@@ -78,7 +79,7 @@ describe('purchase APIs', () => {
     await sequelize.drop();
     await stopServer(server);
   });
-  // %할인을 예시로 테스트 코드 작성
+  /* %할인을 예시로 테스트 코드 작성*/
   describe('POST /orders', () => {
     it('returns 200 10% 할인 쿠폰 사용 및 한국에서 구매', async () => {
       const body = {
@@ -117,7 +118,8 @@ describe('purchase APIs', () => {
       expect(response.status).toBe(200);
       expect(response.data).toBe(expectResult);
     });
-    it('returns 200 쿠폰 없을 때', async () => {
+    it('returns 200 쿠폰 없이 구매 할 때', async () => {
+      const exchangeRate = 1200;
       const body = {
         countryCode: 'US',
         quantity: 1,
