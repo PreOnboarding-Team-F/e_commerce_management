@@ -71,20 +71,20 @@ class Order extends Model {
   }
   static async updateOrderStatus(id, orderStatusId) {
     return await Order.update(
-      { orderStatusId: orderStatusId },
+      { orderStatusId },
       {
         where: {
-          id: id,
+          id,
         },
       }
     );
   }
   static async updateDeliveryNum(id, deliveryNum) {
     await Order.update(
-      { deliveryNum: deliveryNum },
+      { deliveryNum },
       {
         where: {
-          id: id,
+          id,
         },
       }
     );
