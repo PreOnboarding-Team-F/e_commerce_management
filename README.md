@@ -71,6 +71,8 @@
 - 구매 국가, 구매 갯수에 따른 배송비 적용
     - 해외 배송시 환율 1200원 : 1달러로 적용
 
+
+## Unit test 및 Integration test 구현
 <img width="401" alt="image" src="https://user-images.githubusercontent.com/55984573/200171119-540f214a-cac5-4f74-90f1-d44cb886f0a9.png">
 
 ## 설치 및 실행 방법
