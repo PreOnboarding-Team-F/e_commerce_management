@@ -39,6 +39,7 @@ class Order extends Model {
         sequelize,
         tableName: 'orders',
         underscored: true,
+        timestamps: false,
       }
     );
   }
