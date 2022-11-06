@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "DOTENV_CONFIG_PATH=./.env.test jest",
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "repository": {
     "type": "git",
