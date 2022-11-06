@@ -1,7 +1,7 @@
 import Order from '../../model/order.js';
 
 describe('order model findById', () => {
-  it('성공 했을 때', async () => {
+  it('return 200 성공 했을 때', async () => {
     const id = 1;
     const order = { id };
     Order.findOne = jest.fn(() => order);
@@ -15,7 +15,7 @@ describe('order model findById', () => {
 });
 
 describe('order model delivery status update', () => {
-  it('성공 했을 때', async () => {
+  it('return 200 성공 했을 때', async () => {
     const id = 1;
     const deliveryStatusId = 1;
 

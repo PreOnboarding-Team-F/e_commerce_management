@@ -28,9 +28,8 @@ class Country extends Model {
       },
       {
         sequelize,
-        timestamps: false,
         tableName: 'countries',
-        timestamps: false,
+        underscored: true,
       }
     );
   }

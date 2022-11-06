@@ -77,10 +77,7 @@ const giveCouponToUser = async (couponId, userId) => {
   /**
    * 쿠폰을 가지고 있거나 사용한지 않은 쿠폰이면 메시지를 반환합니다.
    */
-  const isExistCouponToUser = await CouponHistory.userCouponInfo(
-    userId,
-    couponId
-  );
+  const isExistCouponToUser = await CouponHistory.isExistCouponToUser(userId);
 
   if (isExistCouponToUser) {
     const notUseCoupon = isExistCouponToUser.dataValues['useDate'];
@@ -191,7 +188,12 @@ const useCoupon = async (
       const today = year + '-' + month + '-' + date;
       const totalPrice = discountPrice + discountDeliveryCost;
 
-      CouponHistory.useToday(userId, couponId, today);
+      CouponHistory.useTodayAndDiscountCost(
+        userId,
+        couponId,
+        today,
+        totalDiscount
+      );
 
       /**
        * 주문 내역을 생성합니다.
@@ -203,7 +205,8 @@ const useCoupon = async (
         city,
         buyrZipx,
         countryId,
-        userId
+        userId,
+        couponType
       );
     } else {
       throw new NotFoundException('이미 사용한 쿠폰입니다.');
@@ -213,8 +216,24 @@ const useCoupon = async (
   }
 };
 
+/**
+ * 발급 쿠폰 내역 조회
+ */
+const getCouponHistory = async () => {
+  return await CouponHistory.getCouponHistory();
+};
+
+/**
+ * 쿠폰 타입별 사용 횟수와 총 할인액
+ */
+const couponTypeDiscount = async () => {
+  return await Coupon.couponTypeDiscount();
+};
+
 export default {
   createCoupon,
   giveCouponToUser,
   useCoupon,
+  getCouponHistory,
+  couponTypeDiscount,
 };

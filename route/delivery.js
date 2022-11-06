@@ -8,6 +8,7 @@ import validator from '../middleware/validate.js';
 const router = express.Router();
 
 const deliveryStatusUpdate = [
+  body('orderId').notEmpty().withMessage('유효하지 않은 값입니다.'),
   body('deliveryStatus')
     .notEmpty()
     .withMessage('유효하지 않은 값입니다.')
@@ -25,7 +26,7 @@ const deliveryStatusUpdate = [
 ];
 
 router.patch(
-  '/:id/delivery-status',
+  '/status',
   deliveryStatusUpdate,
   deliveryController.updateDeliveryStatus
 );

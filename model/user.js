@@ -24,14 +24,12 @@ class User extends Model {
           type: DataTypes.STRING(30),
           allowNull: false,
           unique: true,
-          field: 'phone_num',
         },
       },
       {
         sequelize,
-        timestamps: false,
         tableName: 'users',
-        timestamps: false,
+        underscored: true,
       }
     );
   }
